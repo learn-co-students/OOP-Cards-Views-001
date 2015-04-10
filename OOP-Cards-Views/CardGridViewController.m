@@ -17,26 +17,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    for (UIView *cardView in self.cardsCollection)
-    {
-        if ([cardView isKindOfClass:[UIImageView class]])
-        {
-            NSLog(@"%fpts x %fpts", cardView.frame.size.width, cardView.frame.size.height);
-            NSLog(@"x = %f x y = %f", cardView.frame.origin.x, cardView.frame.origin.y);
+    NSInteger cardsPaddingVertically = 5;
+    NSInteger cardsPaddingHorizontally = 4;
+    CGFloat padding = 20;
+    CGFloat startingX;
+    CGFloat startingY;
+    
+    CGFloat cardWidth = (self.view.frame.size.width - (cardsPaddingHorizontally * padding))/ 3;
+    CGFloat cardHeight = (self.view.frame.size.height - (cardsPaddingVertically * padding))/4;
+    
+    for (NSInteger i = 0; i<self.cardsCollection.count; i++) {
+        UIImageView *imageView = self.cardsCollection[i];
+        if (i == 0) {
+            startingX = padding;
+            startingY = padding;
         }
+        else if (i % 3 == 0 && i != 0) {
+            startingY += cardHeight + padding;
+            startingX = padding;
+        } else {
+            startingX += (cardWidth + padding);
+        }
+        imageView.frame = CGRectMake(startingX, startingY, cardWidth, cardHeight);
     }
-    
-    UIImageView *card1 = self.cardsCollection[0];
-    UIImageView *card2 = self.cardsCollection[1];
-    
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

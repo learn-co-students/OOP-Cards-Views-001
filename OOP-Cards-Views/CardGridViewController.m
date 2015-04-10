@@ -33,7 +33,7 @@
             startingX = padding;
             startingY = padding;
         }
-        else if (i % 3 == 0 && i != 0) {
+        else if (i % 3 == 0) {
             startingY += cardHeight + padding;
             startingX = padding;
         } else {

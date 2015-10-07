@@ -1,4 +1,5 @@
-
+DEPRECATED 10/7/2015 by Mark Murray
+This lab teaches the use of frames for laying out views which is an outdated approach.
 
 OOP-Cards-Views
 =========
